@@ -10,12 +10,12 @@ class Professor(models.Model):
 class Curso(models.Model):
     id =  models.AutoField(primary_key=True)
     coordenador = models.ForeignKey(Professor, null=False, on_delete=models.DO_NOTHING)
-    nome = models.CharField(unique=True)
-    nivel = models.CharField()
+    nome = models.CharField(unique=True, max_length=1024)
+    nivel = models.CharField(max_length=1024)
     
 class Disciplina(models.Model):
     id = models.AutoField(db_column='id', primary_key=True)
     carga_horaria = models.IntegerField()
-    id_curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
     semestre = models.IntegerField()
 
